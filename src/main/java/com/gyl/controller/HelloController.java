@@ -1,6 +1,7 @@
 package com.gyl.controller;
 
 import com.gyl.mapper.UserMapper;
+import com.gyl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ import java.util.List;
 @RestController
 public class HelloController {
 
+    @Autowired
+    private UserService userService;
     @Autowired
     private UserMapper userMapper;
 
@@ -44,5 +47,10 @@ public class HelloController {
         return userMapper.insert(username,sex);
     }
 
+    @RequestMapping("trans")
+    public String trans(){
+        userService.tranfor();
+        return "success";
+    }
 }
 
